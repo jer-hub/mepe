@@ -13,7 +13,6 @@ class WebFarsl(models.Model):
     fname = models.CharField(db_column='fName', max_length=99, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'web_farsl'
 
 
@@ -23,13 +22,11 @@ class WebMcust(models.Model):
     fpassword = models.CharField(db_column='fPassword', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'web_mcust'
 
 
 class WebPcust(models.Model):
-    fauto = models.AutoField(db_column='fAUTO', primary_key=True)
-      # Field name made lowercase.
+    fauto = models.AutoField(db_column='fAUTO', primary_key=True)  # Field name made lowercase.
     fcust = models.ForeignKey(WebMcust, db_column='fCUST', on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
     # fcust = models.PositiveIntegerField(db_column='fCUST')  # Field name made lowercase.
     fsl = models.ForeignKey(WebFarsl, db_column='fSL', on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
@@ -42,5 +39,4 @@ class WebPcust(models.Model):
     fsbal = models.CharField(db_column='fsBal', max_length=18, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'web_pcust'

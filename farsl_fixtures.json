@@ -1,0 +1,317 @@
+[
+  {
+    "model": "web.webfarsl",
+    "pk": -6800,
+    "fields": {
+      "fname": "__INT on LOAN-FINANCIAL ASSISTANCE"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6750,
+    "fields": {
+      "fname": "__INT on LOAN-TRAVEL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6700,
+    "fields": {
+      "fname": "__INT on LOAN-AGRICULTURAL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6650,
+    "fields": {
+      "fname": "__INT on LOAN-INVESTMENT"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6600,
+    "fields": {
+      "fname": "__INT on LOAN-BURIAL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6550,
+    "fields": {
+      "fname": "__INT on LOAN-EDUCATIONAL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6500,
+    "fields": {
+      "fname": "__INT on LOAN-HOUSING"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6450,
+    "fields": {
+      "fname": "__INT on LOAN-MEDICAL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6400,
+    "fields": {
+      "fname": "__INT on LOAN-EMERGENCY"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6300,
+    "fields": {
+      "fname": "__INT on PENSIONER"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6250,
+    "fields": {
+      "fname": "__INT on PDC RET/SEP PAY"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6200,
+    "fields": {
+      "fname": "__INT on DAILY FINANCIAL ASSISTANCE"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6150,
+    "fields": {
+      "fname": "__INT on FAST LOAN"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": -6100,
+    "fields": {
+      "fname": "__INT on LOAN-REGULAR"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1100,
+    "fields": {
+      "fname": "A/R Trade - VALE"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1160,
+    "fields": {
+      "fname": "A/R Trade - Gadget/App 1"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1220,
+    "fields": {
+      "fname": "A/R Trade - Gadget/App 2"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1280,
+    "fields": {
+      "fname": "A/R Trade - Gadget/App 3"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1340,
+    "fields": {
+      "fname": "A/R Trade - Memorial Lot"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1400,
+    "fields": {
+      "fname": "A/R Trade - Eye Crafter"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1460,
+    "fields": {
+      "fname": "A/R Trade - Rice Installment"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1520,
+    "fields": {
+      "fname": "A/R Trade - Bicycle"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1580,
+    "fields": {
+      "fname": "A/R Trade - SOLANE-Filled Content (2 Gives"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1640,
+    "fields": {
+      "fname": "A/R Trade - SOLANE-Swapping Filled Content (2 Gives"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1700,
+    "fields": {
+      "fname": "A/R Trade - MOTORCYCLE PARTS"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 1760,
+    "fields": {
+      "fname": "A/R Trade - GASOLINE"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 2100,
+    "fields": {
+      "fname": "SAVINGS DEPOSIT - REGULAR"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 2200,
+    "fields": {
+      "fname": "SAVINGS DEPOSIT - REFERENDUM"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 3000,
+    "fields": {
+      "fname": "PAID-UP CAPITAL - COMMON"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 4000,
+    "fields": {
+      "fname": "MORTUARY"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 5000,
+    "fields": {
+      "fname": "PREFERRED STOCKS"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6100,
+    "fields": {
+      "fname": "LOAN - REGULAR"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6150,
+    "fields": {
+      "fname": "FAST LOAN"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6200,
+    "fields": {
+      "fname": "DAILY FINANCIAL ASSISTANCE"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6250,
+    "fields": {
+      "fname": "PDC RETIREMENT/SEPARATION PAY"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6300,
+    "fields": {
+      "fname": "PENSIONER"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6400,
+    "fields": {
+      "fname": "LOAN - EMERGENCY"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6450,
+    "fields": {
+      "fname": "LOAN - MEDICAL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6500,
+    "fields": {
+      "fname": "LOAN - HOUSING"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6550,
+    "fields": {
+      "fname": "LOAN - EDUCATIONAL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6600,
+    "fields": {
+      "fname": "LOAN - BURIAL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6650,
+    "fields": {
+      "fname": "LOAN - INVESTMENT"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6700,
+    "fields": {
+      "fname": "LOAN - AGRICULTURAL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6750,
+    "fields": {
+      "fname": "LOAN - TRAVEL"
+    }
+  },
+  {
+    "model": "web.webfarsl",
+    "pk": 6800,
+    "fields": {
+      "fname": "LOAN - FINANCIAL ASSISTANCE"
+    }
+  }
+]
