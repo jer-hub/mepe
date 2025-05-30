@@ -35,30 +35,29 @@ def main():
         if int(count) > 0:
             print(f"Data already exists ({count} WebFarsl objects). Skipping migration.")
             return
-    
-    # Load data fixtures
-    fixture_urls = [
-        "https://your-storage-url/farsl_fixtures.json",
-        "https://your-storage-url/mcust_fixtures.json",
-        "https://your-storage-url/pcust_fixtures_1.json",
-        "https://your-storage-url/pcust_fixtures_2.json",
-        # Add more URLs as needed
+      # Load data fixtures from repository
+    fixture_files = [
+        "farsl_fixtures.json",
+        "mcust_fixtures.json",
+        "pcust_fixtures_1.json",
+        "pcust_fixtures_2.json",
+        "pcust_fixtures_3.json",
+        "pcust_fixtures_4.json",
+        "pcust_fixtures_5.json",
+        "pcust_fixtures_6.json",
+        "pcust_fixtures_7.json",
+        "pcust_fixtures_8.json",
+        "pcust_fixtures_9.json",
     ]
     
-    for url in fixture_urls:
-        filename = url.split('/')[-1]
-        print(f"Downloading {filename}...")
-        
-        if run_command(f"curl -o {filename} {url}"):
+    for filename in fixture_files:
+        if os.path.exists(filename):
             print(f"Loading {filename}...")
-            if run_command(f"python manage.py loaddata {filename}"):
-                run_command(f"rm {filename}")  # Clean up
-            else:
+            if not run_command(f"python manage.py loaddata {filename}"):
                 print(f"Failed to load {filename}")
                 sys.exit(1)
         else:
-            print(f"Failed to download {filename}")
-            sys.exit(1)
+            print(f"Warning: {filename} not found, skipping...")
     
     print("Data migration completed successfully!")
 
