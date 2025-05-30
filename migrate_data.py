@@ -34,32 +34,13 @@ def main():
         count = result.stdout.strip().split('\n')[-1]
         if int(count) > 0:
             print(f"Data already exists ({count} WebFarsl objects). Skipping migration.")
-            return
-      # Load data fixtures from repository
-    fixture_files = [
-        "farsl_fixtures.json",
-        "mcust_fixtures.json",
-        "pcust_fixtures_1.json",
-        "pcust_fixtures_2.json",
-        "pcust_fixtures_3.json",
-        "pcust_fixtures_4.json",
-        "pcust_fixtures_5.json",
-        "pcust_fixtures_6.json",
-        "pcust_fixtures_7.json",
-        "pcust_fixtures_8.json",
-        "pcust_fixtures_9.json",
-    ]
+            return    # Load data fixtures using custom migration script
+    print("Running data migration from fixtures...")
+    if not run_command("python mysql_to_postgres.py"):
+        print("Data migration failed")
+        sys.exit(1)
     
-    for filename in fixture_files:
-        if os.path.exists(filename):
-            print(f"Loading {filename}...")
-            if not run_command(f"python manage.py loaddata {filename}"):
-                print(f"Failed to load {filename}")
-                sys.exit(1)
-        else:
-            print(f"Warning: {filename} not found, skipping...")
-    
-    print("Data migration completed successfully!")
+    print("PostgreSQL data migration completed successfully!")
 
 if __name__ == "__main__":
     main()
