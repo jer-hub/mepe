@@ -1,18 +1,16 @@
 #!/bin/bash
 
 # Build the project
-echo "Creating virtual environment..."
-python3.12 -m venv python3-virtualenv
-source python3-virtualenv/bin/activate
+echo "Installing uv..."
+pip install uv
 
-echo "Installing dependencies..."
-pip install --upgrade pip
-pip install -r requirements.txt
+echo "Syncing dependencies with uv (using uv.lock)..."
+uv sync
 
 echo "Creating staticfiles_build directory..."
 mkdir -p staticfiles_build
 
 echo "Collecting static files..."
-python manage.py collectstatic --noinput --clear
+uv run python manage.py collectstatic --noinput --clear
 
 echo "Build completed successfully!"
