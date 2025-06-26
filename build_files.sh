@@ -16,3 +16,5 @@ echo "Collecting static files..."
 python manage.py collectstatic --noinput --clear
 
 echo "Build completed successfully!"
+
+python manage.py loaddata dump.json
