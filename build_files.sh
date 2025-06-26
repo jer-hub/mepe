@@ -1,17 +1,18 @@
 #!/bin/bash
 
 # Build the project
-echo "Installing uv..."
-curl -LsSf https://astral.sh/uv/install.sh | sh
-export PATH="$HOME/.cargo/bin:$PATH"
+echo "Creating virtual environment..."
+python3.9 -m venv python3-virtualenv
+source python3-virtualenv/bin/activate
 
-echo "Syncing dependencies with uv (using uv.lock)..."
-uv sync
+echo "Installing dependencies..."
+pip install --upgrade pip
+pip install -r requirements.txt
 
 echo "Creating staticfiles_build directory..."
 mkdir -p staticfiles_build
 
 echo "Collecting static files..."
-uv run python manage.py collectstatic --noinput --clear
+python manage.py collectstatic --noinput --clear
 
 echo "Build completed successfully!"
