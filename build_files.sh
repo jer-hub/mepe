@@ -17,4 +17,6 @@ python manage.py collectstatic --noinput --clear
 
 echo "Build completed successfully!"
 
+python manage.py makemigrations web
+python manage.py migrate
 python manage.py loaddata dump.json
