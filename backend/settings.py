@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)
 SECRET_KEY = config('SECRET_KEY', default='qmr7x1_)d6tb9^+v3@e3^ob3t2x873#a7ea@1w-&((ptc%*uf!')
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
@@ -86,16 +86,23 @@ if config('DATABASE_URL', default=None):
 else:
     # Local development database
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
+        'mysql': {
+            'ENGINE': 'django.db.backends.mysql',
             'NAME': config('DB_NAME', default='mepecoop_web'),
-            'USER': config('DB_USER', default='postgres'),
+            'USER': config('DB_USER', default='root'),
             'PASSWORD': config('DB_PASSWORD', default='1234'),
             'HOST': config('DB_HOST', default='localhost'),
-            'PORT': config('DB_PORT', default='5432'),
+            'PORT': config('DB_PORT', default='3306'),
+        },
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('POSTGRES_DB', default='mepecoop_web'),
+            'USER': config('POSTGRES_USER', default='postgres'),
+            'PASSWORD': config('POSTGRES_PASSWORD', default='123'),
+            'HOST': config('POSTGRES_HOST', default='localhost'),
+            'PORT': config('POSTGRES_PORT', default='5432'),
         }
     }
-
 
 
 # Password validation

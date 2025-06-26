@@ -16,8 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from web.views import checkaccount
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('web.urls', namespace='web')),
+    path('', checkaccount, name='checkaccount'),
+    path('particulars/', include('web.urls', namespace='web')),
 ]

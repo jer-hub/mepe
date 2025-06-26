@@ -41,6 +41,8 @@ def particulars(request, chapa):
             particulars = instances.values_list("fsl__fname", flat=True).distinct()
         except (ValueError, AttributeError):
             particulars = []
+          # Store the base queryset for filtering
+        base_instances = instances
         
         # Handle filter functionality with error checking
         selected_particular = request.GET.get('particular', '').strip()
@@ -49,7 +51,7 @@ def particulars(request, chapa):
                 instances = instances.filter(fsl__fname=selected_particular)
             except (ValueError, TypeError):
                 # Reset to original instances if filter fails
-                instances = WebPcust.objects.filter(fcust__fid=chapa)
+                instances = base_instances
                 selected_particular = None
         
         # Handle search functionality with error checking
@@ -59,13 +61,17 @@ def particulars(request, chapa):
                 # Limit search query length to prevent issues
                 if len(search_query) > 100:
                     search_query = search_query[:100]
+                # Apply search filter on top of existing filters (particular + search combined)
                 instances = instances.filter(fdoc__icontains=search_query)
             except (ValueError, TypeError):
-                # Reset to filtered instances if search fails
+                # Reset to base instances and reapply particular filter if it exists
+                instances = base_instances
                 if selected_particular:
-                    instances = WebPcust.objects.filter(fcust__fid=chapa).filter(fsl__fname=selected_particular)
-                else:
-                    instances = WebPcust.objects.filter(fcust__fid=chapa)
+                    try:
+                        instances = instances.filter(fsl__fname=selected_particular)
+                    except (ValueError, TypeError):
+                        instances = base_instances
+                        selected_particular = None
                 search_query = None
         
         if instances.exists() or selected_particular or search_query:  # Show page even when filtered/searched result is empty

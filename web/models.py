@@ -14,6 +14,8 @@ class WebFarsl(models.Model):
 
     class Meta:
         db_table = 'web_farsl'
+        verbose_name = 'Web FARSL'
+        verbose_name_plural = 'Web FARSLs'
 
 
 class WebMcust(models.Model):
@@ -23,14 +25,14 @@ class WebMcust(models.Model):
 
     class Meta:
         db_table = 'web_mcust'
+        verbose_name = 'Web Customer'
+        verbose_name_plural = 'Web Customers'
 
 
 class WebPcust(models.Model):
-    fauto = models.AutoField(db_column='fAUTO', primary_key=True)  # Field name made lowercase.
+    fauto = models.AutoField(db_column='fAUTO', primary_key=True)
     fcust = models.ForeignKey(WebMcust, db_column='fCUST', on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
-    # fcust = models.PositiveIntegerField(db_column='fCUST')  # Field name made lowercase.
     fsl = models.ForeignKey(WebFarsl, db_column='fSL', on_delete=models.CASCADE, blank=True, null=True)  # Field name made lowercase.
-    # fsl = models.SmallIntegerField(db_column='fSL', blank=True, null=True)  # Field name made lowercase.
     fdoc = models.CharField(db_column='fDoc', max_length=12, blank=True, null=True)  # Field name made lowercase.
     fsdate = models.CharField(db_column='fsDate', max_length=10, blank=True, null=True)  # Field name made lowercase.
     frem = models.CharField(db_column='fRem', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -40,3 +42,4 @@ class WebPcust(models.Model):
 
     class Meta:
         db_table = 'web_pcust'
+
