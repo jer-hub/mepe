@@ -2,7 +2,7 @@
 
 # Build the project
 echo "Creating virtual environment..."
-python3.9 -m venv python3-virtualenv
+python3.13 -m venv python3-virtualenv
 source python3-virtualenv/bin/activate
 
 echo "Installing dependencies..."
