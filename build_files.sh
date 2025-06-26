@@ -2,7 +2,8 @@
 
 # Build the project
 echo "Installing uv..."
-pip install uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+export PATH="$HOME/.cargo/bin:$PATH"
 
 echo "Syncing dependencies with uv (using uv.lock)..."
 uv sync
