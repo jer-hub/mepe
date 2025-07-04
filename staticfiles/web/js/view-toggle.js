@@ -3,10 +3,13 @@
  * Handles switching between table and card views
  */
 
-const ViewToggle = {    init: function() {
+const ViewToggle = {
+    init: function() {
         this.viewToggle = document.getElementById('viewToggle');
         this.tableView = document.getElementById('tableView');
         this.cardView = document.getElementById('cardView');
+        this.tableIcon = document.getElementById('tableIcon');
+        this.cardIcon = document.getElementById('cardIcon');
         this.viewText = document.getElementById('viewText');
         
         this.isTableView = true;
@@ -15,6 +18,20 @@ const ViewToggle = {    init: function() {
         if (this.viewToggle) {
             this.loadViewPreference();
             this.bindEvents();
+            this.handleMobileDefaults();
+        }
+    },
+
+    handleMobileDefaults: function() {
+        // Check if we're on mobile and set card view as default for better UX
+        if (window.innerWidth < 640) { // sm breakpoint
+            const preference = Utils.storage.get(this.storageKey);
+            if (!preference) {
+                // First time mobile user - default to card view
+                setTimeout(() => {
+                    this.switchToCardView();
+                }, 100);
+            }
         }
     },
 
@@ -60,14 +77,11 @@ const ViewToggle = {    init: function() {
             // Fade in card view
             setTimeout(() => {
                 this.cardView.style.opacity = '1';
-            }, 50);        }, 200);
+            }, 50);
+        }, 200);
 
-        // Update button state
-        this.viewText.textContent = 'Cards';
-        this.isTableView = false;
-
-        // Update ARIA label
-        this.viewToggle.setAttribute('aria-label', 'Switch to table view');
+        // Update button state and icons
+        this.updateButtonState(false);
     },
 
     switchToTableView: function() {
@@ -88,14 +102,31 @@ const ViewToggle = {    init: function() {
             // Fade in table view
             setTimeout(() => {
                 this.tableView.style.opacity = '1';
-            }, 50);        }, 200);
+            }, 50);
+        }, 200);
 
-        // Update button state
-        this.viewText.textContent = 'Table';
-        this.isTableView = true;
+        // Update button state and icons
+        this.updateButtonState(true);
+    },
 
-        // Update ARIA label
-        this.viewToggle.setAttribute('aria-label', 'Switch to card view');
+    updateButtonState: function(isTableView) {
+        this.isTableView = isTableView;
+        
+        if (this.tableIcon && this.cardIcon && this.viewText) {
+            if (isTableView) {
+                // Show table icon, hide card icon
+                this.tableIcon.classList.remove('hidden');
+                this.cardIcon.classList.add('hidden');
+                this.viewText.textContent = 'Table';
+                this.viewToggle.setAttribute('aria-label', 'Switch to card view');
+            } else {
+                // Show card icon, hide table icon
+                this.tableIcon.classList.add('hidden');
+                this.cardIcon.classList.remove('hidden');
+                this.viewText.textContent = 'Cards';
+                this.viewToggle.setAttribute('aria-label', 'Switch to table view');
+            }
+        }
     },
 
     saveViewPreference: function() {
