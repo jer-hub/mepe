@@ -10,6 +10,19 @@ class Command(BaseCommand):
         
         try:
             with transaction.atomic():
+                # First, drop all existing data from PostgreSQL
+                self.stdout.write('Dropping existing data from PostgreSQL...')
+                
+                # Drop in reverse order to handle foreign key dependencies
+                WebPcust.objects.using('default').all().delete()
+                self.stdout.write('Dropped WebPcust records')
+                
+                WebMcust.objects.using('default').all().delete()
+                self.stdout.write('Dropped WebMcust records')
+                
+                WebFarsl.objects.using('default').all().delete()
+                self.stdout.write('Dropped WebFarsl records')
+                
                 # 1. Transfer WebFarsl
                 self.stdout.write('Transferring WebFarsl...')
                 farsl_count = 0

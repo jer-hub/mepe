@@ -19,4 +19,7 @@ echo "Build completed successfully!"
 
 python manage.py makemigrations web
 python manage.py migrate
+echo "Flushing existing data..."
+python manage.py flush --noinput
+echo "Loading new data..."
 python manage.py loaddata dump.json

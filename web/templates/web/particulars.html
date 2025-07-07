@@ -63,20 +63,13 @@
                 {% endif %}
                 
                 <div class="flex flex-col space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0 w-full sm:w-auto">
-                    <select name="particular" id="particular"
+                    <select name="particular" id="particular" onchange="this.form.submit()"
                         class="w-full sm:w-64 rounded-lg border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-stone-500 focus:ring-stone-500">
-                        <option value="">All Particulars</option>
+                        <option value="">Select S/L to filter</option>
                         {% for particular in particulars %}
                         <option value="{{particular}}" {% if particular == selected_particular %}selected{% endif %}>{{particular}}</option>
                         {% endfor %}
                     </select>
-                    <button type="submit"
-                        class="w-full sm:w-auto px-4 py-2 inline-flex justify-center items-center rounded-lg border border-stone-600 bg-stone-600 text-sm font-medium text-white hover:bg-stone-700 focus:ring-2 focus:outline-none transition-colors duration-200">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                        </svg>
-                        <span>Filter</span>
-                    </button>
                 </div>
             </form>
             
@@ -126,32 +119,51 @@
         </div>
         {% endif %}
     </div>
+    
+    <!-- Mobile Portrait Alert -->
+    <div id="landscapeAlert" class="fixed top-4 left-4 right-4 z-50 bg-gray-100 border border-gray-200 text-gray-700 px-4 py-3 rounded-lg shadow-sm opacity-0 transform -translate-y-2 transition-all duration-300 ease-in-out pointer-events-none md:hidden">
+        <div class="flex items-center space-x-3">
+            <svg class="w-5 h-5 flex-shrink-0 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a3 3 0 003-3V6a3 3 0 00-3-3H8a3 3 0 00-3 3v12a3 3 0 003 3z"/>
+            </svg>
+            <div class="flex-1">
+                <p class="text-sm font-medium text-gray-800">For better viewing experience</p>
+                <p class="text-xs text-gray-600">Rotate your device to landscape mode</p>
+            </div>
+            <button id="closeAlert" class="text-gray-400 hover:text-gray-600 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
     <!-- Table Section -->
     <div id="tableView" class="overflow-x-auto rounded-lg border border-gray-300 shadow-sm">
-        <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+        <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-xs sm:text-sm md:table-fixed">
             <thead class="bg-gray-50">
                 <tr>
-                    <th class="px-3 py-3 text-left font-medium text-gray-900 whitespace-nowrap">Date</th>
-                    <th class="px-3 py-3 text-left font-medium text-gray-900 whitespace-nowrap">Reference</th>
-                    <th class="px-3 py-3 text-left font-medium text-gray-900 whitespace-nowrap">Particulars</th>
-                    <th class="px-3 py-3 text-right font-medium text-gray-900 whitespace-nowrap">Charges</th>
-                    <th class="px-3 py-3 text-right font-medium text-gray-900 whitespace-nowrap">Credits</th>
-                    <th class="px-3 py-3 text-right font-medium text-gray-900 whitespace-nowrap">Balance</th>
+                    <th class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-left font-medium text-gray-900 text-xs sm:text-sm w-16 sm:w-20 md:w-24">Date</th>
+                    <th class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-left font-medium text-gray-900 text-xs sm:text-sm w-12 sm:w-16 md:w-20">Ref</th>
+                    <th class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-left font-medium text-gray-900 text-xs sm:text-sm">Particulars</th>
+                    <th class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-right font-medium text-gray-900 text-xs sm:text-sm w-14 sm:w-18 md:w-24">Charges</th>
+                    <th class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-right font-medium text-gray-900 text-xs sm:text-sm w-14 sm:w-18 md:w-24">Credits</th>
+                    <th class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-right font-medium text-gray-900 text-xs sm:text-sm w-16 sm:w-20 md:w-24">Balance</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200 bg-white">
                 {% for instance in instances %}
                 <tr class="hover:bg-gray-50 transition-colors duration-150">
-                    <td class="px-3 py-3 text-gray-900 whitespace-nowrap">{{instance.fsdate}}</td>
-                    <td class="px-3 py-3 text-gray-700 whitespace-nowrap">{{instance.fdoc}}</td>
-                    <td class="px-3 py-3 text-gray-700 whitespace-nowrap">{{instance.fsl.fname}}</td>
-                    <td class="px-3 py-3 text-right text-gray-700 whitespace-nowrap font-mono">{{instance.fsdr}}</td>
-                    <td class="px-3 py-3 text-right text-gray-700 whitespace-nowrap font-mono">{{instance.fscr}}</td>
-                    <td class="px-3 py-3 text-right text-gray-900 whitespace-nowrap font-mono font-medium">{{instance.fsbal}}</td>
+                    <td class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-gray-900 text-xs sm:text-sm whitespace-nowrap leading-tight sm:leading-normal">{{instance.fsdate}}</td>
+                    <td class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-gray-700 text-xs sm:text-sm break-words leading-tight sm:leading-normal">{{instance.fdoc}}</td>
+                    <td class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-gray-700 text-xs sm:text-sm break-words hyphens-auto leading-tight sm:leading-relaxed md:leading-loose">{{instance.frem}}</td>
+                    <td class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-right text-gray-700 font-mono text-xs sm:text-sm whitespace-nowrap leading-tight sm:leading-normal">{{instance.fsdr}}</td>
+                    <td class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-right text-gray-700 font-mono text-xs sm:text-sm whitespace-nowrap leading-tight sm:leading-normal">{{instance.fscr}}</td>
+                    <td class="px-1 py-1.5 sm:px-2 sm:py-2 md:px-4 md:py-3 text-right text-gray-900 font-mono font-medium text-xs sm:text-sm whitespace-nowrap leading-tight sm:leading-normal">{{instance.fsbal}}</td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="6" class="px-3 py-8 text-center text-gray-500">
+                    <td colspan="6" class="px-1 py-6 sm:px-2 sm:py-8 md:px-4 text-center text-gray-500">
                         {% if selected_particular %}
                             No records found for the selected particular.
                         {% else %}
@@ -179,7 +191,7 @@
                 </div>
                 <div class="col-span-2">
                     <span class="font-medium text-gray-500">Particulars:</span>
-                    <p class="text-gray-900">{{instance.fsl.fname}}</p>
+                    <p class="text-gray-900">{{instance.frem}}</p>
                 </div>
                 <div>
                     <span class="font-medium text-gray-500">Charges:</span>
@@ -211,4 +223,62 @@
 
 {% block javascript %}
 <script src="{% static 'web/js/view-toggle.js' %}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const alert = document.getElementById('landscapeAlert');
+    const closeBtn = document.getElementById('closeAlert');
+    let alertShown = false;
+    let alertTimeout;
+
+    function checkOrientation() {
+        // Check if device is mobile and in portrait mode
+        const isMobile = window.innerWidth <= 768;
+        const isPortrait = window.innerHeight > window.innerWidth;
+        
+        if (isMobile && isPortrait && !alertShown) {
+            showAlert();
+        } else if (isMobile && !isPortrait && alertShown) {
+            hideAlert();
+        }
+    }
+
+    function showAlert() {
+        alertShown = true;
+        alert.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+        alert.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        
+        // Auto-hide after 5 seconds
+        alertTimeout = setTimeout(() => {
+            hideAlert();
+        }, 5000);
+    }
+
+    function hideAlert() {
+        alert.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        alert.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+        
+        // Reset after animation
+        setTimeout(() => {
+            alertShown = false;
+        }, 300);
+        
+        if (alertTimeout) {
+            clearTimeout(alertTimeout);
+        }
+    }
+
+    // Close button functionality
+    closeBtn.addEventListener('click', function() {
+        hideAlert();
+    });
+
+    // Check orientation on load and resize
+    checkOrientation();
+    window.addEventListener('resize', checkOrientation);
+    window.addEventListener('orientationchange', function() {
+        // Small delay to allow orientation change to complete
+        setTimeout(checkOrientation, 100);
+    });
+});
+</script>
 {% endblock javascript %}

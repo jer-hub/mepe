@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import WebPcust
+from .models import WebPcust, WebFarsl
 
 # Create your views here.
 def checkaccount(request):
@@ -36,9 +36,9 @@ def particulars(request, chapa):
             except (AttributeError, ValueError):
                 name = "Unknown Member"
         
-        # Safely get particulars list
+        # Safely get particulars list from WebFarsl
         try:
-            particulars = instances.values_list("fsl__fname", flat=True).distinct()
+            particulars = WebFarsl.objects.values_list("fname", flat=True).distinct()
         except (ValueError, AttributeError):
             particulars = []
           # Store the base queryset for filtering
