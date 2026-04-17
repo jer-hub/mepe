@@ -49,7 +49,7 @@ Members can enter their chapa/member ID to view account particulars, then filter
 
 1. **Clone and enter the project**
    ```bash
-   git clone <your-fork-or-repo-url>
+   git clone https://github.com/jer-hub/mepe.git
    cd mepe
    ```
 
