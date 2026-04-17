@@ -68,18 +68,18 @@ Members can enter their chapa/member ID to view account particulars, then filter
    ```bash
    DEBUG=True
    # Local/dev only. Use a long random value in production.
-   SECRET_KEY=dev-only-change-this-to-a-long-random-secret
+   SECRET_KEY=<your-50-plus-char-random-django-secret-key>
    ALLOWED_HOSTS=localhost,127.0.0.1
    POSTGRES_DB=mepecoop_web
    POSTGRES_USER=postgres
    # Local/dev only.
-   POSTGRES_PASSWORD=CHANGE_ME_POSTGRES_PASSWORD
+   POSTGRES_PASSWORD=<your-postgres-password>
    POSTGRES_HOST=localhost
    POSTGRES_PORT=5432
    DB_NAME=mepecoop_web
    DB_USER=root
    # Local/dev only.
-   DB_PASSWORD=CHANGE_ME_MYSQL_PASSWORD
+   DB_PASSWORD=<your-mysql-password>
    DB_HOST=localhost
    DB_PORT=3306
    # Optional: if set, Django parses this as the default DB URL
