@@ -67,16 +67,19 @@ Members can enter their chapa/member ID to view account particulars, then filter
 4. **Create a `.env` file** in the project root with values like:
    ```bash
    DEBUG=True
-   SECRET_KEY=change-me
+   # Local/dev only. Use a long random value in production.
+   SECRET_KEY=dev-only-change-this-to-a-long-random-secret
    ALLOWED_HOSTS=localhost,127.0.0.1
    POSTGRES_DB=mepecoop_web
    POSTGRES_USER=postgres
-   POSTGRES_PASSWORD=123
+   # Local/dev only.
+   POSTGRES_PASSWORD=dev-postgres-password
    POSTGRES_HOST=localhost
    POSTGRES_PORT=5432
    DB_NAME=mepecoop_web
    DB_USER=root
-   DB_PASSWORD=1234
+   # Local/dev only.
+   DB_PASSWORD=dev-mysql-password
    DB_HOST=localhost
    DB_PORT=3306
    # Optional: if set, Django parses this as the default DB URL
