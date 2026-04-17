@@ -73,13 +73,13 @@ Members can enter their chapa/member ID to view account particulars, then filter
    POSTGRES_DB=mepecoop_web
    POSTGRES_USER=postgres
    # Local/dev only.
-   POSTGRES_PASSWORD=dev-postgres-password
+   POSTGRES_PASSWORD=CHANGE_ME_POSTGRES_PASSWORD
    POSTGRES_HOST=localhost
    POSTGRES_PORT=5432
    DB_NAME=mepecoop_web
    DB_USER=root
    # Local/dev only.
-   DB_PASSWORD=dev-mysql-password
+   DB_PASSWORD=CHANGE_ME_MYSQL_PASSWORD
    DB_HOST=localhost
    DB_PORT=3306
    # Optional: if set, Django parses this as the default DB URL
